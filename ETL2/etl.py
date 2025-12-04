@@ -4,17 +4,20 @@ import psycopg2
 import csv
 import os
 import sys
+import locale
 
-
+# Force UTF-8 encoding
+os.environ['PYTHONIOENCODING'] = 'utf-8'
 if sys.version_info[0] >= 3:
     import io
-    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 DB_CONFIG = {
     'host': 'localhost',
-    'port': 5432,
-    'database': 'neosousse',
-    'user': 'postgres',
+    'port': 5339,
+    'database': 'smart_city',
+    'user': 'chouket',
     'password': '2003'  
 }
 
@@ -25,8 +28,16 @@ def connect_db():
         conn = psycopg2.connect(**DB_CONFIG)
         print("Connected to PostgreSQL")
         return conn
+    except UnicodeDecodeError as e:
+        print("Connection error: Unicode decode error (check database credentials)")
+        return None
     except Exception as e:
-        print(f"Connection error: {e}")
+        # Handle encoding issues in exception messages
+        try:
+            error_msg = str(e)
+        except:
+            error_msg = repr(e)
+        print(f"Connection error: {error_msg}")
         return None
 
 def import_csv(conn, csv_filename, table_name, columns, transform_row=None):
@@ -265,7 +276,11 @@ def main():
         print("=" * 70)
         
     except Exception as e:
-        print(f"\n[X] Erreur: {e}")
+        try:
+            error_msg = str(e)
+        except UnicodeDecodeError:
+            error_msg = str(e).encode('utf-8', errors='replace').decode('utf-8')
+        print(f"\n[X] Erreur: {error_msg}")
     finally:
         conn.close()
         print("\nConnexion fermee\n")
