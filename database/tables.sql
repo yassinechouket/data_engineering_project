@@ -1,9 +1,7 @@
 -- Enable UUID generation
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
------------------------------------------------------
--- 1. PROPRIETAIRE
------------------------------------------------------
+
 CREATE TABLE Proprietaire (
     id_proprietaire SERIAL PRIMARY KEY,
     nom_proprietaire VARCHAR(100) NOT NULL,
@@ -14,17 +12,13 @@ CREATE TABLE Proprietaire (
     CONSTRAINT chk_prop_email CHECK (email LIKE '%@%')
 );
 
------------------------------------------------------
--- 2. TYPE (sensor type)
------------------------------------------------------
+
 CREATE TABLE Type (
     id_type SERIAL PRIMARY KEY,
     nom_type VARCHAR(100) NOT NULL
 );
 
------------------------------------------------------
--- 3. CAPTEUR
------------------------------------------------------
+
 CREATE TABLE Capteur (
     uuid UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     localisation VARCHAR(300) NOT NULL,
@@ -38,18 +32,14 @@ CREATE TABLE Capteur (
     FOREIGN KEY (id_type) REFERENCES Type(id_type)
 );
 
------------------------------------------------------
--- 4. TECHNICIEN
------------------------------------------------------
+
 CREATE TABLE Technicien (
     id_tech VARCHAR(50) PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
     telephone VARCHAR(20)
 );
 
------------------------------------------------------
--- 5. INTERVENTION
------------------------------------------------------
+
 CREATE TABLE Intervention (
     id_intervention SERIAL PRIMARY KEY,
     uuid_capteur UUID NOT NULL,
@@ -61,9 +51,7 @@ CREATE TABLE Intervention (
     FOREIGN KEY (uuid_capteur) REFERENCES Capteur(uuid) ON DELETE CASCADE
 );
 
------------------------------------------------------
--- 6. INTERVENTION / TECHNICIEN (junction table)
------------------------------------------------------
+
 CREATE TABLE Intervention_Technicien (
     id_intervention INTEGER NOT NULL,
     id_technicien VARCHAR(50) NOT NULL,
@@ -73,9 +61,7 @@ CREATE TABLE Intervention_Technicien (
     FOREIGN KEY (id_technicien) REFERENCES Technicien(id_tech) ON DELETE RESTRICT
 );
 
------------------------------------------------------
--- 7. CITOYEN
------------------------------------------------------
+
 CREATE TABLE Citoyen (
     id_citoyen SERIAL PRIMARY KEY,
     nom_citoyen VARCHAR(100) NOT NULL,
@@ -89,9 +75,7 @@ CREATE TABLE Citoyen (
     CONSTRAINT chk_citoyen_email CHECK (email LIKE '%@%')
 );
 
------------------------------------------------------
--- 8. CONSULTATION CITOYENNE
------------------------------------------------------
+
 CREATE TABLE Consultation_Citoyenne (
     id_consultation SERIAL PRIMARY KEY,
     titre_consultation VARCHAR(255) NOT NULL,
@@ -102,9 +86,7 @@ CREATE TABLE Consultation_Citoyenne (
     CONSTRAINT chk_dates_consultation CHECK (date_fin >= date_debut)
 );
 
------------------------------------------------------
--- 9. PARTICIPATION CITOYENNE
------------------------------------------------------
+
 CREATE TABLE Participation_Citoyenne (
     id_citoyen INTEGER NOT NULL,
     id_consultation INTEGER NOT NULL,
@@ -116,18 +98,14 @@ CREATE TABLE Participation_Citoyenne (
     FOREIGN KEY (id_consultation) REFERENCES Consultation_Citoyenne(id_consultation) ON DELETE CASCADE
 );
 
------------------------------------------------------
--- 10. VEHICULE AUTONOME
------------------------------------------------------
+
 CREATE TABLE Vehicule_Autonome (
     plaque_immatriculation VARCHAR(20) PRIMARY KEY,
     type_vehicule VARCHAR(50) NOT NULL,
     energie_utilisee VARCHAR(30) NOT NULL CHECK(energie_utilisee IN ('électrique', 'hybride', 'hydrogène', 'autre'))
 );
 
------------------------------------------------------
--- 11. TRAJET
------------------------------------------------------
+
 CREATE TABLE Trajet (
     id_trajet SERIAL PRIMARY KEY,
     plaque_immatriculation VARCHAR(20) NOT NULL,
@@ -139,9 +117,7 @@ CREATE TABLE Trajet (
     FOREIGN KEY(plaque_immatriculation) REFERENCES Vehicule_Autonome(plaque_immatriculation) ON DELETE CASCADE
 );
 
------------------------------------------------------
--- 12. MESURE (sensor readings)
------------------------------------------------------
+
 CREATE TABLE Mesure (
     id_mesure SERIAL PRIMARY KEY,
     uuid_capteur UUID NOT NULL,
@@ -152,9 +128,7 @@ CREATE TABLE Mesure (
     FOREIGN KEY (uuid_capteur) REFERENCES Capteur(uuid) ON DELETE CASCADE
 );
 
------------------------------------------------------
--- 13. VALIDATION IA
------------------------------------------------------
+
 CREATE TABLE Validation_IA (
     id_validation SERIAL PRIMARY KEY,
     id_intervention INTEGER NOT NULL UNIQUE,
