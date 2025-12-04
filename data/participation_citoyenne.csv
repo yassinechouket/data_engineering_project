@@ -1,0 +1,174 @@
+id_citoyen,id_consultation,date_participation,avis,vote
+20,1,2024-02-11 00:00:00,Quelques réserves sur la mise en œuvre,contre
+47,1,2024-02-09 00:00:00,Je soutiens pleinement ce projet,pour
+14,1,2024-01-27 00:00:00,"Très bonne idée, à développer davantage",neutre
+10,1,2024-01-31 00:00:00,"Très bonne idée, à développer davantage",pour
+50,1,2024-02-09 00:00:00,Quelques réserves sur la mise en œuvre,contre
+37,1,2024-01-27 00:00:00,"Très bonne idée, à développer davantage",abstention
+17,1,2024-01-20 00:00:00,Nécessite plus de concertation,contre
+46,1,2024-02-12 00:00:00,Nécessite plus de concertation,neutre
+12,1,2024-01-22 00:00:00,Important pour notre avenir écologique,contre
+26,1,2024-01-29 00:00:00,Quelques réserves sur la mise en œuvre,neutre
+29,1,2024-01-16 00:00:00,Je soutiens pleinement ce projet,abstention
+38,1,2024-02-04 00:00:00,Important pour notre avenir écologique,pour
+35,1,2024-01-25 00:00:00,Nécessite plus de concertation,neutre
+23,1,2024-01-21 00:00:00,Important pour notre avenir écologique,abstention
+39,1,2024-01-24 00:00:00,Important pour notre avenir écologique,contre
+25,1,2024-01-18 00:00:00,Je soutiens pleinement ce projet,abstention
+16,1,2024-02-01 00:00:00,Important pour notre avenir écologique,contre
+15,1,2024-02-12 00:00:00,Nécessite plus de concertation,abstention
+8,1,2024-02-03 00:00:00,Nécessite plus de concertation,contre
+22,1,2024-01-28 00:00:00,Je soutiens pleinement ce projet,contre
+33,1,2024-01-27 00:00:00,Important pour notre avenir écologique,pour
+45,1,2024-02-01 00:00:00,Excellente initiative pour notre ville,neutre
+13,1,2024-01-30 00:00:00,"Très bonne idée, à développer davantage",abstention
+48,1,2024-02-15 00:00:00,Quelques réserves sur la mise en œuvre,abstention
+6,1,2024-02-02 00:00:00,Excellente initiative pour notre ville,neutre
+1,1,2024-02-07 00:00:00,Je soutiens pleinement ce projet,contre
+30,1,2024-02-02 00:00:00,Excellente initiative pour notre ville,abstention
+36,2,2024-03-29 00:00:00,Excellente initiative pour notre ville,neutre
+44,2,2024-03-01 00:00:00,Important pour notre avenir écologique,contre
+47,2,2024-03-13 00:00:00,"Très bonne idée, à développer davantage",neutre
+32,2,2024-03-14 00:00:00,Quelques réserves sur la mise en œuvre,abstention
+41,2,2024-03-03 00:00:00,Quelques réserves sur la mise en œuvre,neutre
+6,2,2024-03-13 00:00:00,Quelques réserves sur la mise en œuvre,pour
+35,2,2024-03-02 00:00:00,Important pour notre avenir écologique,pour
+39,2,2024-03-29 00:00:00,Je soutiens pleinement ce projet,neutre
+37,2,2024-03-27 00:00:00,Quelques réserves sur la mise en œuvre,abstention
+29,2,2024-03-15 00:00:00,Nécessite plus de concertation,pour
+14,2,2024-03-04 00:00:00,Nécessite plus de concertation,neutre
+46,2,2024-03-16 00:00:00,Nécessite plus de concertation,pour
+21,2,2024-03-31 00:00:00,Je soutiens pleinement ce projet,contre
+30,2,2024-03-01 00:00:00,Important pour notre avenir écologique,abstention
+42,2,2024-03-15 00:00:00,Important pour notre avenir écologique,contre
+25,2,2024-03-10 00:00:00,Quelques réserves sur la mise en œuvre,pour
+31,2,2024-03-10 00:00:00,Je soutiens pleinement ce projet,abstention
+23,2,2024-03-19 00:00:00,Important pour notre avenir écologique,abstention
+49,2,2024-03-15 00:00:00,Important pour notre avenir écologique,pour
+13,2,2024-03-02 00:00:00,Excellente initiative pour notre ville,neutre
+7,2,2024-03-27 00:00:00,Excellente initiative pour notre ville,neutre
+11,2,2024-03-12 00:00:00,Quelques réserves sur la mise en œuvre,contre
+1,2,2024-03-26 00:00:00,"Très bonne idée, à développer davantage",neutre
+15,2,2024-03-06 00:00:00,Important pour notre avenir écologique,neutre
+38,2,2024-03-16 00:00:00,Excellente initiative pour notre ville,contre
+50,2,2024-03-05 00:00:00,Nécessite plus de concertation,pour
+4,2,2024-03-04 00:00:00,Excellente initiative pour notre ville,contre
+45,2,2024-03-12 00:00:00,"Très bonne idée, à développer davantage",contre
+10,2,2024-03-16 00:00:00,"Très bonne idée, à développer davantage",abstention
+30,3,2024-04-12 00:00:00,Excellente initiative pour notre ville,abstention
+2,3,2024-05-08 00:00:00,Nécessite plus de concertation,contre
+23,3,2024-04-22 00:00:00,Je soutiens pleinement ce projet,contre
+8,3,2024-04-24 00:00:00,Excellente initiative pour notre ville,abstention
+14,3,2024-05-10 00:00:00,Je soutiens pleinement ce projet,neutre
+22,3,2024-05-04 00:00:00,Excellente initiative pour notre ville,pour
+40,3,2024-04-19 00:00:00,Important pour notre avenir écologique,neutre
+28,3,2024-04-19 00:00:00,"Très bonne idée, à développer davantage",contre
+3,3,2024-05-02 00:00:00,"Très bonne idée, à développer davantage",contre
+26,3,2024-04-19 00:00:00,"Très bonne idée, à développer davantage",contre
+5,3,2024-05-05 00:00:00,"Très bonne idée, à développer davantage",contre
+48,3,2024-05-01 00:00:00,Important pour notre avenir écologique,abstention
+24,3,2024-04-29 00:00:00,Excellente initiative pour notre ville,pour
+45,3,2024-05-02 00:00:00,Je soutiens pleinement ce projet,pour
+13,3,2024-04-10 00:00:00,Nécessite plus de concertation,contre
+12,3,2024-04-24 00:00:00,Je soutiens pleinement ce projet,abstention
+9,3,2024-04-21 00:00:00,Excellente initiative pour notre ville,abstention
+17,3,2024-04-14 00:00:00,Excellente initiative pour notre ville,neutre
+6,4,2024-06-14 00:00:00,"Très bonne idée, à développer davantage",neutre
+46,4,2024-06-05 00:00:00,Excellente initiative pour notre ville,neutre
+48,4,2024-06-07 00:00:00,Quelques réserves sur la mise en œuvre,neutre
+36,4,2024-06-05 00:00:00,"Très bonne idée, à développer davantage",abstention
+24,4,2024-06-04 00:00:00,Nécessite plus de concertation,neutre
+10,4,2024-06-26 00:00:00,Quelques réserves sur la mise en œuvre,pour
+12,4,2024-06-06 00:00:00,"Très bonne idée, à développer davantage",contre
+14,4,2024-06-14 00:00:00,Je soutiens pleinement ce projet,abstention
+43,4,2024-06-20 00:00:00,Important pour notre avenir écologique,contre
+18,4,2024-06-16 00:00:00,Je soutiens pleinement ce projet,abstention
+19,4,2024-06-20 00:00:00,Quelques réserves sur la mise en œuvre,neutre
+38,4,2024-06-24 00:00:00,Quelques réserves sur la mise en œuvre,abstention
+30,4,2024-06-14 00:00:00,Nécessite plus de concertation,neutre
+22,4,2024-06-24 00:00:00,"Très bonne idée, à développer davantage",pour
+50,4,2024-06-12 00:00:00,Excellente initiative pour notre ville,pour
+27,4,2024-06-15 00:00:00,Excellente initiative pour notre ville,pour
+41,4,2024-06-22 00:00:00,"Très bonne idée, à développer davantage",pour
+15,4,2024-06-14 00:00:00,"Très bonne idée, à développer davantage",contre
+7,4,2024-06-26 00:00:00,Nécessite plus de concertation,pour
+40,4,2024-06-03 00:00:00,Quelques réserves sur la mise en œuvre,contre
+11,4,2024-06-26 00:00:00,Excellente initiative pour notre ville,abstention
+3,4,2024-06-13 00:00:00,"Très bonne idée, à développer davantage",abstention
+9,4,2024-06-11 00:00:00,Excellente initiative pour notre ville,neutre
+17,4,2024-06-12 00:00:00,Je soutiens pleinement ce projet,pour
+35,4,2024-06-28 00:00:00,"Très bonne idée, à développer davantage",neutre
+5,4,2024-06-20 00:00:00,Quelques réserves sur la mise en œuvre,contre
+8,4,2024-06-15 00:00:00,Je soutiens pleinement ce projet,pour
+28,4,2024-06-10 00:00:00,"Très bonne idée, à développer davantage",contre
+29,4,2024-06-03 00:00:00,Excellente initiative pour notre ville,neutre
+26,4,2024-06-03 00:00:00,"Très bonne idée, à développer davantage",pour
+39,5,2024-09-06 00:00:00,Nécessite plus de concertation,abstention
+45,5,2024-08-22 00:00:00,Nécessite plus de concertation,contre
+44,5,2024-09-12 00:00:00,Nécessite plus de concertation,contre
+8,5,2024-08-21 00:00:00,Excellente initiative pour notre ville,contre
+23,5,2024-08-24 00:00:00,Je soutiens pleinement ce projet,contre
+41,5,2024-09-01 00:00:00,Je soutiens pleinement ce projet,pour
+14,5,2024-08-24 00:00:00,"Très bonne idée, à développer davantage",pour
+3,5,2024-09-06 00:00:00,Nécessite plus de concertation,pour
+50,5,2024-08-19 00:00:00,Nécessite plus de concertation,neutre
+29,5,2024-09-01 00:00:00,Nécessite plus de concertation,contre
+11,5,2024-09-11 00:00:00,Nécessite plus de concertation,contre
+21,5,2024-08-31 00:00:00,Je soutiens pleinement ce projet,pour
+27,5,2024-08-27 00:00:00,Nécessite plus de concertation,abstention
+15,5,2024-08-30 00:00:00,Important pour notre avenir écologique,pour
+31,5,2024-08-24 00:00:00,Important pour notre avenir écologique,contre
+6,5,2024-08-26 00:00:00,Je soutiens pleinement ce projet,pour
+42,5,2024-09-12 00:00:00,"Très bonne idée, à développer davantage",contre
+35,5,2024-08-24 00:00:00,Important pour notre avenir écologique,neutre
+24,5,2024-08-19 00:00:00,Je soutiens pleinement ce projet,neutre
+17,5,2024-08-30 00:00:00,Excellente initiative pour notre ville,abstention
+4,5,2024-08-23 00:00:00,Je soutiens pleinement ce projet,contre
+12,5,2024-09-09 00:00:00,Je soutiens pleinement ce projet,pour
+13,5,2024-09-15 00:00:00,"Très bonne idée, à développer davantage",pour
+49,5,2024-09-13 00:00:00,Excellente initiative pour notre ville,contre
+38,5,2024-09-12 00:00:00,"Très bonne idée, à développer davantage",abstention
+46,5,2024-09-10 00:00:00,Excellente initiative pour notre ville,neutre
+43,6,2024-10-07 00:00:00,Nécessite plus de concertation,neutre
+2,6,2024-10-11 00:00:00,Quelques réserves sur la mise en œuvre,contre
+13,6,2024-10-11 00:00:00,Je soutiens pleinement ce projet,abstention
+42,6,2024-10-18 00:00:00,Je soutiens pleinement ce projet,pour
+11,6,2024-10-23 00:00:00,Important pour notre avenir écologique,pour
+32,6,2024-10-25 00:00:00,Excellente initiative pour notre ville,pour
+40,6,2024-10-17 00:00:00,Important pour notre avenir écologique,contre
+5,6,2024-10-03 00:00:00,Nécessite plus de concertation,pour
+14,6,2024-10-22 00:00:00,Important pour notre avenir écologique,pour
+37,6,2024-10-15 00:00:00,Nécessite plus de concertation,contre
+15,6,2024-10-31 00:00:00,Nécessite plus de concertation,contre
+23,6,2024-10-30 00:00:00,Quelques réserves sur la mise en œuvre,contre
+28,6,2024-10-09 00:00:00,Important pour notre avenir écologique,contre
+25,6,2024-10-30 00:00:00,Quelques réserves sur la mise en œuvre,contre
+6,6,2024-10-03 00:00:00,Excellente initiative pour notre ville,contre
+47,6,2024-10-02 00:00:00,Je soutiens pleinement ce projet,contre
+41,6,2024-10-26 00:00:00,Je soutiens pleinement ce projet,pour
+12,7,2024-11-29 00:00:00,Nécessite plus de concertation,contre
+20,7,2024-11-16 00:00:00,Je soutiens pleinement ce projet,pour
+32,7,2024-11-29 00:00:00,Important pour notre avenir écologique,abstention
+18,7,2024-11-04 00:00:00,Je soutiens pleinement ce projet,abstention
+49,7,2024-11-27 00:00:00,Excellente initiative pour notre ville,pour
+33,7,2024-11-09 00:00:00,Excellente initiative pour notre ville,contre
+47,7,2024-11-29 00:00:00,Excellente initiative pour notre ville,abstention
+44,7,2024-11-17 00:00:00,Important pour notre avenir écologique,abstention
+36,7,2024-11-13 00:00:00,Je soutiens pleinement ce projet,neutre
+1,7,2024-11-22 00:00:00,Quelques réserves sur la mise en œuvre,contre
+19,7,2024-11-12 00:00:00,Excellente initiative pour notre ville,abstention
+27,7,2024-11-04 00:00:00,Je soutiens pleinement ce projet,neutre
+10,7,2024-11-17 00:00:00,Je soutiens pleinement ce projet,neutre
+28,7,2024-11-08 00:00:00,Nécessite plus de concertation,contre
+45,7,2024-11-01 00:00:00,Nécessite plus de concertation,pour
+30,7,2024-11-08 00:00:00,Nécessite plus de concertation,pour
+4,7,2024-11-10 00:00:00,"Très bonne idée, à développer davantage",abstention
+16,7,2024-11-05 00:00:00,Excellente initiative pour notre ville,pour
+48,7,2024-11-30 00:00:00,Important pour notre avenir écologique,pour
+24,7,2024-11-02 00:00:00,Je soutiens pleinement ce projet,neutre
+13,7,2024-11-02 00:00:00,Nécessite plus de concertation,contre
+50,7,2024-11-07 00:00:00,Je soutiens pleinement ce projet,neutre
+31,7,2024-11-12 00:00:00,Je soutiens pleinement ce projet,pour
+3,7,2024-11-11 00:00:00,"Très bonne idée, à développer davantage",abstention
+14,7,2024-11-10 00:00:00,"Très bonne idée, à développer davantage",abstention
+15,7,2024-11-09 00:00:00,Excellente initiative pour notre ville,neutre
