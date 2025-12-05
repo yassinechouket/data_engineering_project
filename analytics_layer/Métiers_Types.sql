@@ -48,3 +48,31 @@ ORDER BY t.economie_co2_kg DESC;
 
 
 CREATE VIEW interventions_predictives AS
+SELECT 
+    COUNT(DISTINCT i.id_intervention) AS nombre_interventions_predictives,
+    SUM(i.impact_environnemental_co2_kg) AS economie_co2_totale_kg,
+    SUM(i.cout_euros) AS cout_total_euros,
+    AVG(i.duree_minutes) AS duree_moyenne_minutes
+FROM intervention i
+WHERE i.nature_intervention = 'predictive'
+  AND i.date_heure_intervention >= DATE_TRUNC('month', CURRENT_DATE)
+  AND i.date_heure_intervention < DATE_TRUNC('month', CURRENT_DATE) + INTERVAL '1 month';
+
+
+
+
+CREATE VIEW citoyens_plus_engages AS
+SELECT 
+    c.id_citoyen,
+    c.nom_citoyen,
+    c.prenom_citoyen,
+    c.email,
+    c.score_engagement_ecologique,
+    COUNT(p.id_consultation) AS nombre_participations,
+    SUM(CASE WHEN p.vote = 'pour' THEN 1 ELSE 0 END) AS votes_pour,
+    c.preferences_mobilite
+FROM citoyen c
+LEFT JOIN participation_citoyenne p ON c.id_citoyen = p.id_citoyen
+GROUP BY c.id_citoyen, c.nom_citoyen, c.prenom_citoyen, c.email, 
+         c.score_engagement_ecologique, c.preferences_mobilite
+ORDER BY c.score_engagement_ecologique DESC, nombre_participations DESC;
