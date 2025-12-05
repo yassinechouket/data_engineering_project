@@ -1,0 +1,459 @@
+-- ============================================================================
+-- BASE DE DONNÉES - PLATEFORME INTELLIGENTE NEO-SOUSSE 2030
+-- VERSION COMPLÈTE
+-- ============================================================================
+
+-- Suppression des tables si elles existent (pour réinitialisation)
+DROP TABLE IF EXISTS Participation_Citoyenne CASCADE;
+DROP TABLE IF EXISTS Consultation_Citoyenne CASCADE;
+DROP TABLE IF EXISTS Mesure CASCADE;
+DROP TABLE IF EXISTS Intervention_Technicien CASCADE;
+DROP TABLE IF EXISTS Validation_IA CASCADE;
+DROP TABLE IF EXISTS Intervention CASCADE;
+DROP TABLE IF EXISTS Trajet CASCADE;
+DROP TABLE IF EXISTS Vehicule_Autonome CASCADE;
+DROP TABLE IF EXISTS Citoyen CASCADE;
+DROP TABLE IF EXISTS Technicien CASCADE;
+DROP TABLE IF EXISTS Capteur CASCADE;
+DROP TABLE IF EXISTS Arrondissement CASCADE;
+DROP TABLE IF EXISTS Proprietaire CASCADE;
+
+-- ============================================================================
+-- TABLE: Arrondissement
+-- Description: Découpage administratif de la ville
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: id_arrondissement
+-- ============================================================================
+CREATE TABLE Arrondissement (
+    id_arrondissement SERIAL PRIMARY KEY,
+    nom_arrondissement VARCHAR(100) NOT NULL UNIQUE,
+    superficie_km2 DECIMAL(10,2),
+    population INTEGER
+);
+
+-- ============================================================================
+-- TABLE: Proprietaire
+-- Description: Propriétaires des capteurs (municipalité ou partenaires privés)
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: id_proprietaire
+-- ============================================================================
+CREATE TABLE Proprietaire (
+    id_proprietaire SERIAL PRIMARY KEY,
+    nom_proprietaire VARCHAR(100) NOT NULL,
+    type_proprietaire VARCHAR(20) NOT NULL 
+        CHECK (type_proprietaire IN ('municipalité', 'partenaire privé')),
+    adresse VARCHAR(255) NOT NULL,
+    telephone VARCHAR(20),
+    email VARCHAR(100),
+    CONSTRAINT chk_prop_email CHECK (email LIKE '%@%')
+);
+
+-- ============================================================================
+-- TABLE: Capteur
+-- Description: Gestion des capteurs intelligents urbains
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: id_capteur (UUID)
+-- Clés Étrangères: id_proprietaire, id_arrondissement
+-- ============================================================================
+CREATE TABLE Capteur (
+    id_capteur VARCHAR(36) PRIMARY KEY,
+    type_capteur VARCHAR(50) NOT NULL 
+        CHECK (type_capteur IN ('qualité de l''air', 'trafic', 'énergie', 'déchets', 'éclairage')),
+    localisation_geographique VARCHAR(255) NOT NULL,
+    statut VARCHAR(20) NOT NULL 
+        CHECK (statut IN ('actif', 'en maintenance', 'hors service')),
+    id_proprietaire INTEGER NOT NULL,
+    id_arrondissement INTEGER NOT NULL,
+    date_installation DATE NOT NULL,
+    FOREIGN KEY (id_proprietaire) REFERENCES Proprietaire(id_proprietaire) ON DELETE RESTRICT,
+    FOREIGN KEY (id_arrondissement) REFERENCES Arrondissement(id_arrondissement) ON DELETE RESTRICT
+);
+
+-- ============================================================================
+-- TABLE: Mesure
+-- Description: Données collectées par les capteurs en temps réel
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: id_mesure
+-- Clé Étrangère: id_capteur
+-- ============================================================================
+CREATE TABLE Mesure (
+    id_mesure SERIAL PRIMARY KEY,
+    id_capteur VARCHAR(36) NOT NULL,
+    date_heure_mesure TIMESTAMP NOT NULL,
+    valeur_mesuree DECIMAL(15,4) NOT NULL,
+    unite_mesure VARCHAR(20) NOT NULL,
+    qualite VARCHAR(20) CHECK (qualite IN ('bonne', 'moyenne', 'mauvaise', 'critique')),
+    FOREIGN KEY (id_capteur) REFERENCES Capteur(id_capteur) ON DELETE CASCADE
+);
+
+-- ============================================================================
+-- TABLE: Technicien
+-- Description: Techniciens certifiés pour maintenance
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: id_technicien
+-- ============================================================================
+CREATE TABLE Technicien (
+    id_technicien SERIAL PRIMARY KEY,
+    nom_technicien VARCHAR(100) NOT NULL,
+    prenom_technicien VARCHAR(100) NOT NULL,
+    certification VARCHAR(100) NOT NULL,
+    telephone VARCHAR(20),
+    email VARCHAR(100),
+    date_certification DATE NOT NULL,
+    CONSTRAINT chk_tech_email CHECK (email LIKE '%@%')
+);
+
+-- ============================================================================
+-- TABLE: Intervention
+-- Description: Interventions de maintenance sur les capteurs
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: id_intervention
+-- Clé Étrangère: id_capteur
+-- ============================================================================
+CREATE TABLE Intervention (
+    id_intervention SERIAL PRIMARY KEY,
+    id_capteur VARCHAR(36) NOT NULL,
+    date_heure_intervention TIMESTAMP NOT NULL,
+    nature_intervention VARCHAR(20) NOT NULL 
+        CHECK (nature_intervention IN ('prédictive', 'corrective', 'curative')),
+    duree_minutes INTEGER NOT NULL CHECK (duree_minutes > 0),
+    cout_euros DECIMAL(10,2) NOT NULL CHECK (cout_euros >= 0),
+    impact_environnemental_co2_kg DECIMAL(10,2),
+    FOREIGN KEY (id_capteur) REFERENCES Capteur(id_capteur) ON DELETE CASCADE
+);
+
+-- ============================================================================
+-- TABLE: Validation_IA
+-- Description: Système de validation IA des interventions
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: id_validation
+-- Clé Étrangère: id_intervention
+-- ============================================================================
+CREATE TABLE Validation_IA (
+    id_validation SERIAL PRIMARY KEY,
+    id_intervention INTEGER NOT NULL UNIQUE,
+    date_heure_validation TIMESTAMP NOT NULL,
+    score_validation DECIMAL(5,2) CHECK (score_validation BETWEEN 0 AND 100),
+    statut_validation VARCHAR(20) NOT NULL 
+        CHECK (statut_validation IN ('validée', 'rejetée', 'en attente')),
+    commentaire_ia TEXT,
+    FOREIGN KEY (id_intervention) REFERENCES Intervention(id_intervention) ON DELETE CASCADE
+);
+
+-- ============================================================================
+-- TABLE: Intervention_Technicien
+-- Description: Association entre interventions et techniciens avec rôles
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: (id_intervention, id_technicien)
+-- Clés Étrangères: id_intervention, id_technicien
+-- ============================================================================
+CREATE TABLE Intervention_Technicien (
+    id_intervention INTEGER NOT NULL,
+    id_technicien INTEGER NOT NULL,
+    role_technicien VARCHAR(20) NOT NULL 
+        CHECK (role_technicien IN ('intervenant', 'validateur')),
+    PRIMARY KEY (id_intervention, id_technicien),
+    FOREIGN KEY (id_intervention) REFERENCES Intervention(id_intervention) ON DELETE CASCADE,
+    FOREIGN KEY (id_technicien) REFERENCES Technicien(id_technicien) ON DELETE RESTRICT
+);
+
+-- ============================================================================
+-- TABLE: Citoyen
+-- Description: Profils des citoyens volontaires engagés
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: id_citoyen
+-- ============================================================================
+CREATE TABLE Citoyen (
+    id_citoyen SERIAL PRIMARY KEY,
+    nom_citoyen VARCHAR(100) NOT NULL,
+    prenom_citoyen VARCHAR(100) NOT NULL,
+    adresse VARCHAR(255) NOT NULL,
+    telephone VARCHAR(20),
+    email VARCHAR(100) NOT NULL,
+    score_engagement_ecologique INTEGER DEFAULT 0 CHECK (score_engagement_ecologique >= 0),
+    preferences_mobilite TEXT,
+    CONSTRAINT chk_citoyen_email CHECK (email LIKE '%@%')
+);
+
+-- ============================================================================
+-- TABLE: Consultation_Citoyenne
+-- Description: Consultations publiques organisées par la municipalité
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: id_consultation
+-- ============================================================================
+CREATE TABLE Consultation_Citoyenne (
+    id_consultation SERIAL PRIMARY KEY,
+    titre_consultation VARCHAR(255) NOT NULL,
+    description TEXT,
+    date_debut DATE NOT NULL,
+    date_fin DATE NOT NULL,
+    theme VARCHAR(100),
+    CONSTRAINT chk_dates_consultation CHECK (date_fin >= date_debut)
+);
+
+-- ============================================================================
+-- TABLE: Participation_Citoyenne
+-- Description: Historique de participation des citoyens aux consultations
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: (id_citoyen, id_consultation)
+-- Clés Étrangères: id_citoyen, id_consultation
+-- ============================================================================
+CREATE TABLE Participation_Citoyenne (
+    id_citoyen INTEGER NOT NULL,
+    id_consultation INTEGER NOT NULL,
+    date_participation TIMESTAMP NOT NULL,
+    avis TEXT,
+    vote VARCHAR(20) CHECK (vote IN ('pour', 'contre', 'abstention', 'neutre')),
+    PRIMARY KEY (id_citoyen, id_consultation),
+    FOREIGN KEY (id_citoyen) REFERENCES Citoyen(id_citoyen) ON DELETE CASCADE,
+    FOREIGN KEY (id_consultation) REFERENCES Consultation_Citoyenne(id_consultation) ON DELETE CASCADE
+);
+
+-- ============================================================================
+-- TABLE: Vehicule_Autonome
+-- Description: Flotte de véhicules autonomes municipaux
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: plaque_immatriculation
+-- ============================================================================
+CREATE TABLE Vehicule_Autonome (
+    plaque_immatriculation VARCHAR(20) PRIMARY KEY,
+    type_vehicule VARCHAR(50) NOT NULL,
+    energie_utilisee VARCHAR(30) NOT NULL 
+        CHECK (energie_utilisee IN ('électrique', 'hybride', 'hydrogène', 'autre'))
+);
+
+-- ============================================================================
+-- TABLE: Trajet
+-- Description: Trajets effectués par les véhicules autonomes
+-- Forme Normale: 3FN/BCNF
+-- Clé Primaire: id_trajet
+-- Clé Étrangère: plaque_immatriculation
+-- ============================================================================
+CREATE TABLE Trajet (
+    id_trajet SERIAL PRIMARY KEY,
+    plaque_immatriculation VARCHAR(20) NOT NULL,
+    origine VARCHAR(255) NOT NULL,
+    destination VARCHAR(255) NOT NULL,
+    date_heure_depart TIMESTAMP NOT NULL,
+    duree_minutes INTEGER NOT NULL CHECK (duree_minutes > 0),
+    economie_co2_kg DECIMAL(10,2) CHECK (economie_co2_kg >= 0),
+    FOREIGN KEY (plaque_immatriculation) REFERENCES Vehicule_Autonome(plaque_immatriculation) ON DELETE CASCADE
+);
+
+-- ============================================================================
+-- INDEX pour optimisation des requêtes métiers
+-- ============================================================================
+
+-- Recherche de capteurs par type, statut et arrondissement
+CREATE INDEX idx_capteur_type_statut ON Capteur(type_capteur, statut);
+CREATE INDEX idx_capteur_arrondissement ON Capteur(id_arrondissement);
+
+-- Recherche de mesures par capteur et date (pour analyses temporelles)
+CREATE INDEX idx_mesure_capteur_date ON Mesure(id_capteur, date_heure_mesure DESC);
+CREATE INDEX idx_mesure_date ON Mesure(date_heure_mesure DESC);
+
+-- Recherche d'interventions par date et nature
+CREATE INDEX idx_intervention_date_nature ON Intervention(date_heure_intervention, nature_intervention);
+CREATE INDEX idx_intervention_capteur ON Intervention(id_capteur);
+
+-- Recherche de trajets par véhicule et date
+CREATE INDEX idx_trajet_vehicule_date ON Trajet(plaque_immatriculation, date_heure_depart);
+CREATE INDEX idx_trajet_economie ON Trajet(economie_co2_kg DESC);
+
+-- Recherche de citoyens par score d'engagement
+CREATE INDEX idx_citoyen_engagement ON Citoyen(score_engagement_ecologique DESC);
+
+-- Recherche de participations par citoyen
+CREATE INDEX idx_participation_citoyen ON Participation_Citoyenne(id_citoyen);
+
+-- ============================================================================
+-- CONTRAINTES ET TRIGGERS
+-- ============================================================================
+
+-- Trigger pour vérifier qu'une intervention a au moins 2 techniciens
+CREATE OR REPLACE FUNCTION check_min_techniciens()
+RETURNS TRIGGER AS $$
+DECLARE
+    nb_techniciens INTEGER;
+BEGIN
+    SELECT COUNT(*) INTO nb_techniciens
+    FROM Intervention_Technicien 
+    WHERE id_intervention = NEW.id_intervention;
+    
+    IF nb_techniciens < 2 THEN
+        RAISE EXCEPTION 'Une intervention doit avoir au moins 2 techniciens (un intervenant et un validateur)';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_min_techniciens
+AFTER INSERT OR UPDATE ON Intervention_Technicien
+FOR EACH ROW
+EXECUTE FUNCTION check_min_techniciens();
+
+-- Trigger pour vérifier qu'il y a au moins un intervenant et un validateur
+CREATE OR REPLACE FUNCTION check_roles_techniciens()
+RETURNS TRIGGER AS $$
+DECLARE
+    nb_intervenants INTEGER;
+    nb_validateurs INTEGER;
+BEGIN
+    SELECT 
+        COUNT(*) FILTER (WHERE role_technicien = 'intervenant'),
+        COUNT(*) FILTER (WHERE role_technicien = 'validateur')
+    INTO nb_intervenants, nb_validateurs
+    FROM Intervention_Technicien 
+    WHERE id_intervention = NEW.id_intervention;
+    
+    IF nb_intervenants < 1 THEN
+        RAISE EXCEPTION 'Une intervention doit avoir au moins un technicien intervenant';
+    END IF;
+    
+    IF nb_validateurs < 1 THEN
+        RAISE EXCEPTION 'Une intervention doit avoir au moins un technicien validateur';
+    END IF;
+    
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_roles_techniciens
+AFTER INSERT OR UPDATE ON Intervention_Technicien
+FOR EACH ROW
+EXECUTE FUNCTION check_roles_techniciens();
+
+-- ============================================================================
+-- VUES POUR LES QUESTIONS MÉTIERS
+-- ============================================================================
+
+-- Vue: Disponibilité des capteurs par arrondissement
+CREATE OR REPLACE VIEW Vue_Disponibilite_Capteurs_Arrondissement AS
+SELECT 
+    a.nom_arrondissement,
+    COUNT(*) as total_capteurs,
+    COUNT(*) FILTER (WHERE c.statut = 'actif') as capteurs_actifs,
+    COUNT(*) FILTER (WHERE c.statut = 'en maintenance') as capteurs_maintenance,
+    COUNT(*) FILTER (WHERE c.statut = 'hors service') as capteurs_hors_service,
+    ROUND(100.0 * COUNT(*) FILTER (WHERE c.statut = 'actif') / COUNT(*), 2) as taux_disponibilite
+FROM Arrondissement a
+LEFT JOIN Capteur c ON a.id_arrondissement = c.id_arrondissement
+GROUP BY a.id_arrondissement, a.nom_arrondissement;
+
+-- Vue: Zones les plus polluées (qualité de l'air)
+CREATE OR REPLACE VIEW Vue_Pollution_24h AS
+SELECT 
+    a.nom_arrondissement,
+    c.localisation_geographique,
+    AVG(m.valeur_mesuree) as pollution_moyenne,
+    MAX(m.valeur_mesuree) as pollution_max,
+    COUNT(*) as nb_mesures
+FROM Mesure m
+JOIN Capteur c ON m.id_capteur = c.id_capteur
+JOIN Arrondissement a ON c.id_arrondissement = a.id_arrondissement
+WHERE c.type_capteur = 'qualité de l''air'
+  AND m.date_heure_mesure >= NOW() - INTERVAL '24 hours'
+GROUP BY a.nom_arrondissement, c.localisation_geographique
+ORDER BY pollution_moyenne DESC;
+
+-- Vue: Citoyens les plus engagés
+CREATE OR REPLACE VIEW Vue_Citoyens_Engages AS
+SELECT 
+    id_citoyen,
+    nom_citoyen,
+    prenom_citoyen,
+    score_engagement_ecologique,
+    COUNT(pc.id_consultation) as nb_participations
+FROM Citoyen c
+LEFT JOIN Participation_Citoyenne pc ON c.id_citoyen = pc.id_citoyen
+GROUP BY c.id_citoyen, nom_citoyen, prenom_citoyen, score_engagement_ecologique
+ORDER BY score_engagement_ecologique DESC, nb_participations DESC;
+
+-- Vue: Interventions prédictives mensuelles
+CREATE OR REPLACE VIEW Vue_Interventions_Predictives_Mois AS
+SELECT 
+    DATE_TRUNC('month', date_heure_intervention) as mois,
+    COUNT(*) as nb_interventions_predictives,
+    SUM(cout_euros) as cout_total,
+    SUM(impact_environnemental_co2_kg) as economie_co2_totale
+FROM Intervention
+WHERE nature_intervention = 'prédictive'
+  AND date_heure_intervention >= DATE_TRUNC('month', CURRENT_DATE)
+GROUP BY DATE_TRUNC('month', date_heure_intervention);
+
+-- Vue: Meilleurs trajets pour réduction CO2
+CREATE OR REPLACE VIEW Vue_Meilleurs_Trajets_CO2 AS
+SELECT 
+    t.id_trajet,
+    v.plaque_immatriculation,
+    v.type_vehicule,
+    t.origine,
+    t.destination,
+    t.date_heure_depart,
+    t.duree_minutes,
+    t.economie_co2_kg
+FROM Trajet t
+JOIN Vehicule_Autonome v ON t.plaque_immatriculation = v.plaque_immatriculation
+WHERE t.economie_co2_kg IS NOT NULL
+ORDER BY t.economie_co2_kg DESC;
+
+-- ============================================================================
+-- COMMENTAIRES SUR LA NORMALISATION
+-- ============================================================================
+
+/*
+ANALYSE COMPLÈTE DES FORMES NORMALES:
+
+1. ARRONDISSEMENT: 3FN/BCNF
+   - DFs: id_arrondissement → {nom, superficie, population}
+
+2. PROPRIETAIRE: 3FN/BCNF
+   - Séparation du propriétaire pour éviter redondance
+   - DFs: id_proprietaire → {nom, type, adresse, tel, email}
+
+3. CAPTEUR: 3FN/BCNF
+   - Propriétaire externalisé (normalisation)
+   - DFs: id_capteur → {type, localisation, statut, proprietaire, arrond, date}
+
+4. MESURE: 3FN/BCNF
+   - Données temporelles des capteurs
+   - DFs: id_mesure → {capteur, date_heure, valeur, unite, qualité}
+
+5. TECHNICIEN: 3FN/BCNF
+   - DFs: id_technicien → {nom, prenom, certification, tel, email, date_cert}
+
+6. INTERVENTION: 3FN/BCNF
+   - DFs: id_intervention → {capteur, date, nature, durée, coût, impact}
+
+7. VALIDATION_IA: 3FN/BCNF
+   - Système de validation automatisé
+   - DFs: id_validation → {intervention, date, score, statut, commentaire}
+   - Relation 1:1 avec Intervention (UNIQUE sur id_intervention)
+
+8. INTERVENTION_TECHNICIEN: 3FN/BCNF
+   - Association avec rôles
+   - DFs: (id_intervention, id_technicien) → role_technicien
+
+9. CITOYEN: 3FN/BCNF
+   - DFs: id_citoyen → {nom, prenom, adresse, tel, email, score, prefs}
+
+10. CONSULTATION_CITOYENNE: 3FN/BCNF
+    - DFs: id_consultation → {titre, description, dates, theme}
+
+11. PARTICIPATION_CITOYENNE: 3FN/BCNF
+    - Historique de participation
+    - DFs: (id_citoyen, id_consultation) → {date_part, avis, vote}
+
+12. VEHICULE_AUTONOME: 3FN/BCNF
+    - DFs: plaque → {type, energie}
+
+13. TRAJET: 3FN/BCNF
+    - DFs: id_trajet → {plaque, origine, dest, date, durée, economie}
+
+REDONDANCES ÉLIMINÉES:
+- Propriétaire externalisé de Capteur
+- Arrondissement séparé pour éviter répétition
+- Consultations externalisées de Citoyen
+- Mesures séparées des Capteurs (séries temporelles)
+- Validation IA séparée des Interventions
+*/
