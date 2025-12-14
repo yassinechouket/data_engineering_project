@@ -31,7 +31,9 @@ LEFT JOIN capteur c ON a.id_arrondissement = c.id_arrondissement
 GROUP BY a.nom_arrondissement
 ORDER BY taux_disponibilite_pourcentage DESC;
 
-    
+
+
+
 CREATE VIEW trajets_véhicules_autonomes AS
 SELECT 
     t.plaque_immatriculation,
@@ -47,6 +49,8 @@ JOIN vehicule_autonome v ON t.plaque_immatriculation = v.plaque_immatriculation
 ORDER BY t.economie_co2_kg DESC;
 
 
+
+
 CREATE VIEW interventions_predictives AS
 SELECT 
     COUNT(DISTINCT i.id_intervention) AS nombre_interventions_predictives,
@@ -57,6 +61,7 @@ FROM intervention i
 WHERE i.nature_intervention = 'predictive'
   AND i.date_heure_intervention >= DATE_TRUNC('month', CURRENT_DATE)
   AND i.date_heure_intervention < DATE_TRUNC('month', CURRENT_DATE) + INTERVAL '1 month';
+
 
 
 

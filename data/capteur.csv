@@ -1,46 +1,55 @@
 id_capteur,type_capteur,localisation_geographique,statut,id_proprietaire,id_arrondissement,date_installation
-162bbff7-f369-43ae-bc27-5f492f80329b,énergie,Place Farhat Hached,actif,2,1,2024-02-17
-caacd207-7261-4451-af91-c8e037d2cf8d,éclairage,Place Farhat Hached,actif,1,1,2024-02-10
-c0f33019-8c3b-4021-92e8-e3764275be84,éclairage,Port de Sousse,actif,4,8,2023-12-06
-4383af14-8814-41c3-9082-7b1457942f76,déchets,Port de Sousse,actif,2,8,2024-04-26
-0bb58028-05b5-4d67-b39f-772ee0d1e91a,déchets,Avenue Habib Bourguiba,actif,3,1,2023-12-14
-2f414b0c-6ef3-4fd3-bf5c-70df89bf11bb,éclairage,Avenue Habib Bourguiba,actif,4,1,2024-07-10
-66c37a81-eeee-423f-ae22-63da5109a3d8,qualité de l'air,Médina de Sousse,actif,4,1,2023-06-04
-7dc7c112-21cd-4b72-b4c0-0519a7a48a77,déchets,Médina de Sousse,actif,2,1,2024-06-03
-b256458b-34a0-40e9-b87a-eff4104be1de,énergie,Médina de Sousse,actif,2,1,2023-03-23
-ae14a64f-a625-496b-b7ca-3128414e7484,trafic,Zone Industrielle Sousse,en maintenance,2,6,2023-11-03
-819df09d-98e0-4a71-bce4-2e958ced03a3,qualité de l'air,Zone Industrielle Sousse,actif,3,6,2024-08-17
-1a1b7b54-ff2a-4c15-8723-729ea257bb79,qualité de l'air,Stade Olympique,en maintenance,3,5,2023-03-10
-4f657187-1dd3-4910-a779-e3a8ba12763d,trafic,Stade Olympique,actif,3,5,2023-07-30
-80bfe006-62d9-4f94-b054-dc8d963f845c,éclairage,Corniche de Sousse,hors service,5,7,2023-02-05
-f41db9bb-a6ef-4caf-8d31-5dc8bc87a563,trafic,Corniche de Sousse,actif,4,7,2023-01-05
-ce04a9f8-08b2-45c2-a99c-0d16d1c28075,éclairage,Centre Ville,en maintenance,1,2,2023-12-18
-eaff88e0-6bd4-4155-8acb-235db62a9db1,déchets,Centre Ville,actif,1,2,2023-02-12
-b839100a-e86d-451c-a099-a0c6ed140f19,qualité de l'air,Quartier Khezama,actif,2,5,2024-06-22
-5960858b-e2ab-47c0-b711-c4dd16ee45ac,éclairage,Quartier Khezama,actif,4,5,2024-04-01
-c7687b85-8ba9-4b67-be96-7154dd788cf2,éclairage,Bab Jdid,en maintenance,4,1,2024-02-18
-db63fe5b-a643-4dc1-958b-c5417b8b4f4a,qualité de l'air,Bab Jdid,actif,1,1,2024-02-12
-31c2f2c4-5208-4a46-a933-3bdb354f45a6,déchets,Bab Jdid,actif,2,1,2023-04-28
-3e3ca6aa-a20d-4e7e-bf23-6eb6577b3537,déchets,Avenue Léopold Sédar Senghor,actif,5,3,2023-10-14
-b0d6089f-e049-4291-854f-255626356432,éclairage,Avenue Léopold Sédar Senghor,actif,3,3,2023-10-17
-c5b334b1-4482-4928-97a6-53e8706dca4d,éclairage,Palais des Congrès,actif,3,7,2023-09-23
-07f89f5c-59fe-4a22-a0cb-0d1fb74195d6,déchets,Palais des Congrès,actif,3,7,2023-02-04
-29ebd779-abe5-4aa6-bcf2-4755115c421e,énergie,Avenue Hedi Chaker,actif,5,2,2023-12-11
-283ae411-d18d-430e-9945-65538c6e3c28,trafic,Avenue Hedi Chaker,actif,3,2,2023-05-22
-ae19379f-0279-48e7-ae76-35eaa4093355,éclairage,Avenue Hedi Chaker,actif,5,2,2023-12-28
-5ece2f16-7856-48eb-8b3c-2c1e2f102598,énergie,Route de la Corniche,actif,5,7,2023-03-14
-20462781-4bd6-4734-a0b4-839c7e4b8ba8,éclairage,Route de la Corniche,actif,3,7,2024-02-29
-a89e3358-f63f-43bf-8b69-4116b5216ad1,qualité de l'air,Quartier Sidi Abdelhamid,actif,4,4,2023-08-08
-8a2a7e6e-10e2-4929-b818-967f85abd0be,trafic,Quartier Sidi Abdelhamid,actif,2,4,2023-09-02
-903b9de0-885e-4907-a168-77639f857783,éclairage,Campus Universitaire,actif,3,3,2024-07-31
-1b3ca39d-37db-4cba-8720-f07204ad9bf0,qualité de l'air,Campus Universitaire,actif,1,3,2023-06-22
-9cdea7a5-b569-49cd-9e4c-a85bf72bd91e,trafic,Hôpital Universitaire,actif,3,2,2023-07-16
-786c080c-30d5-459b-87b8-b650a93485d9,énergie,Hôpital Universitaire,actif,3,2,2023-04-18
-22e9adc6-8581-4fa1-b615-e578573e2da5,éclairage,Marché Central,actif,4,1,2023-01-11
-d81cdb7a-f80c-4968-a311-cf4451dd6f4e,énergie,Marché Central,actif,1,1,2023-08-30
-cb102671-3eb9-4f04-ac58-02a35950641b,trafic,Marché Central,actif,2,1,2023-02-11
-3ff05abf-5023-44eb-9075-ccc12fbbe74a,éclairage,Gare Ferroviaire,actif,4,2,2023-02-16
-21ba7f74-c40b-4b88-8179-93569dd3def5,trafic,Gare Ferroviaire,actif,2,2,2024-08-04
-40d73c3e-bda2-4b74-adfd-e9e9e3ccad2c,déchets,Gare Ferroviaire,actif,1,2,2024-02-22
-99b3e35d-2d0e-4049-b94c-80773b1c4f70,énergie,Parc El Bousten,actif,4,3,2024-04-28
-2b7f293b-45c2-4a57-a122-ba6794394bd6,éclairage,Parc El Bousten,actif,3,3,2024-05-28
+be180b99-c3ac-4036-9eb2-f3c24dace248,qualité de l'air,Place Farhat Hached,actif,3,1,2024-08-13
+6ae77a6e-47c1-4c4c-9d03-2addb401861b,énergie,Place Farhat Hached,actif,2,1,2023-07-09
+44d59eec-8dc0-48e0-bdc5-65c6bc7075e9,éclairage,Port de Sousse,actif,5,8,2023-02-01
+068d7c3a-b62c-46c1-a6d5-6e39ec96b04e,déchets,Port de Sousse,en maintenance,3,8,2024-06-20
+bf1f1661-9dfe-450d-933b-40b0db9d5e43,trafic,Port de Sousse,actif,1,8,2023-04-13
+48184b40-01c8-4615-bb74-6d8a56ecd1c5,énergie,Avenue Habib Bourguiba,en maintenance,2,1,2023-06-23
+3313d694-c6e1-445b-a60f-2682256a2e0f,trafic,Avenue Habib Bourguiba,en maintenance,2,1,2023-02-19
+bd5edbc6-9521-400d-84b3-35025f29d498,déchets,Avenue Habib Bourguiba,actif,4,1,2023-04-07
+5d2b5f49-3161-4709-8d2f-2f53dfdecfd9,éclairage,Médina de Sousse,en maintenance,5,1,2023-04-03
+10457b2d-e770-4f83-8f27-74ad5a3de137,trafic,Médina de Sousse,actif,3,1,2023-02-15
+034c3e27-9174-4c4a-8b6e-73bc69b20a65,trafic,Zone Industrielle Sousse,actif,4,6,2024-03-16
+22d829f2-da8c-4f37-aba0-8a6ce888a812,énergie,Zone Industrielle Sousse,actif,4,6,2024-06-01
+80e7c207-07e6-4d87-ac16-9450fbf16a7d,qualité de l'air,Zone Industrielle Sousse,actif,1,6,2023-12-14
+11a7f1bb-44ff-4424-9d8b-e189495f8573,qualité de l'air,Stade Olympique,actif,5,5,2023-12-17
+2474da76-e2ae-42b5-9888-25769040691d,déchets,Stade Olympique,actif,4,5,2024-02-28
+f0be3ce4-176d-4221-a65f-bb4726e6aa4f,qualité de l'air,Corniche de Sousse,actif,1,7,2023-09-20
+8bfe9252-b5a3-4d65-8a63-c881000beb6f,déchets,Corniche de Sousse,actif,2,7,2023-12-05
+68d4c8aa-9ffa-4184-a197-8eafeba3398f,éclairage,Corniche de Sousse,actif,3,7,2024-06-06
+6f76372d-f907-4ac9-a72e-92cae31a2602,trafic,Centre Ville,actif,2,2,2024-04-25
+a5c4aa6e-9cde-4d68-95c6-d2a22c4a0df6,qualité de l'air,Centre Ville,actif,1,2,2024-02-22
+47e4f071-bf96-4ff0-8257-bf2094d0905b,éclairage,Centre Ville,actif,2,2,2024-08-09
+3d6331dd-f316-4676-b25b-fb916c2568f5,énergie,Quartier Khezama,actif,2,5,2024-07-22
+271f4a18-8c5a-43bb-a85a-a12d0f2743aa,trafic,Quartier Khezama,actif,5,5,2023-04-20
+2e963019-56b5-4940-8c7a-de737c3422ac,qualité de l'air,Quartier Khezama,actif,2,5,2023-07-13
+8afd36fc-0fd7-4705-a4cd-dbbda541af33,trafic,Bab Jdid,actif,5,1,2023-12-23
+d1667947-0763-40cb-9a8a-358ebc10cae4,énergie,Bab Jdid,actif,5,1,2023-11-13
+4c7c4058-18bb-464d-b37d-65ad36e483e5,éclairage,Bab Jdid,actif,2,1,2023-01-03
+3ab07260-6628-459f-ac93-ae39a3f80d45,énergie,Avenue Léopold Sédar Senghor,actif,3,3,2023-07-05
+1374795f-ba41-4eee-8109-f3afd7546684,trafic,Avenue Léopold Sédar Senghor,actif,4,3,2024-07-06
+7c4037d2-58e6-442d-8ab5-62d0570888ca,déchets,Avenue Léopold Sédar Senghor,actif,5,3,2023-01-09
+b4bd9017-d64d-42cf-bb4e-78f24190d1f1,qualité de l'air,Palais des Congrès,actif,2,7,2024-06-20
+5b1c75a5-a490-47d3-87c4-2491fecf046c,énergie,Palais des Congrès,actif,2,7,2024-05-07
+81b676b1-4ff7-428c-b806-da5215fa84d5,énergie,Avenue Hedi Chaker,actif,5,2,2024-05-06
+6c0cafde-3700-49a3-8f5d-343fae9dd230,qualité de l'air,Avenue Hedi Chaker,hors service,4,2,2024-06-28
+2b7bb40a-2e26-4501-b4c3-3452b81174f5,déchets,Route de la Corniche,actif,3,7,2023-08-08
+038c978a-6462-409c-b7f4-80f45ee7f600,qualité de l'air,Route de la Corniche,actif,5,7,2024-08-13
+d7f892c5-1f3d-4525-b3cd-23773a16349d,trafic,Route de la Corniche,actif,4,7,2023-11-18
+b0b04602-8b40-495b-baef-dd1cb1cc92a9,qualité de l'air,Quartier Sidi Abdelhamid,actif,5,4,2024-05-29
+3e377e36-e193-4dcc-953f-152e29b4b600,déchets,Quartier Sidi Abdelhamid,actif,5,4,2024-07-28
+4495dab1-67f2-42bc-9bb4-9ad0c39b5f27,éclairage,Quartier Sidi Abdelhamid,actif,5,4,2023-04-02
+45c36b8c-086e-4230-80be-ff72d27c49ae,qualité de l'air,Campus Universitaire,actif,2,3,2023-05-05
+37be6b2b-5a99-49d0-8997-d59aa1ab4016,éclairage,Campus Universitaire,actif,3,3,2023-03-11
+bc4f5384-c177-4461-8606-8f33777625b6,énergie,Campus Universitaire,actif,4,3,2023-04-18
+097ba2e4-ea9f-46ab-b648-77119047c14f,énergie,Hôpital Universitaire,hors service,4,2,2024-02-29
+f05edaf1-0b62-4ac7-84f1-365de2c77446,éclairage,Hôpital Universitaire,actif,3,2,2023-03-26
+c4f580f7-c039-4942-bc75-5c566af54c71,trafic,Hôpital Universitaire,en maintenance,5,2,2023-10-12
+b4102dd0-50be-40f7-9628-f46c2a2bc0f6,énergie,Marché Central,actif,4,1,2024-02-07
+0e012be0-f509-4367-892e-77c2b9014f2e,éclairage,Marché Central,actif,3,1,2023-10-07
+2d8edb67-9a36-49e0-87c5-a8c42fcb67ec,déchets,Marché Central,actif,1,1,2023-08-09
+71b7e77d-4e26-48ba-9414-cf5a5930da9f,trafic,Gare Ferroviaire,actif,4,2,2023-07-28
+078a1498-ad80-4760-9273-0fb903bb96af,énergie,Gare Ferroviaire,actif,4,2,2023-05-10
+c66063dc-8ca2-4c32-ace8-bccea860088b,énergie,Parc El Bousten,actif,2,3,2023-04-07
+fe44e207-0123-4989-b168-0df11c97a3b3,déchets,Parc El Bousten,actif,5,3,2024-06-05
+e5713d97-6a7b-49f7-9862-dc0d3f0bd907,qualité de l'air,Parc El Bousten,en maintenance,4,3,2024-05-01
